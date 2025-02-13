@@ -1,11 +1,11 @@
-# \\\ script
+# /// script
 # requires-python = ">=3.10,<3.13"
 # dependencies = [
 #    "nglui>=3.7.1",
 #    "pcg-skel>=1.1.0",
 #    "pyvista[all]>=0.44.1",
 # ]
-# \\\
+# ///
 # %%
 
 import numpy as np
