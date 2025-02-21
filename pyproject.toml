@@ -1,11 +1,9 @@
 [project]
 dependencies = [
-    "ipykernel>=6.29.5",
-    "ipywidgets>=8.1.5",
-    "jupyter>=1.1.1",
-    # "nglui>=3.7.1",
-    # "pcg-skel>=1.1.0",
-    # "pyvista[all]>=0.44.1",
+    "caveclient>=7.6.0",
+    "ipykernel",
+    "pandas>=2.2.3",
+    "seaborn>=0.13.2",
 ]
 description = "Add your description here"
 name = "testbed"
