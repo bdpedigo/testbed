@@ -1,8 +1,10 @@
 [project]
 dependencies = [
-    "caveclient>=7.6.0",
+    "caveclient[cv]>=7.6.0",
+    "gpytoolbox>=0.3.3",
     "ipykernel",
     "pandas>=2.2.3",
+    "pyvista[all]>=0.44.2",
     "seaborn>=0.13.2",
 ]
 description = "Add your description here"
