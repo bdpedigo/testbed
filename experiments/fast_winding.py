@@ -9,6 +9,8 @@
 
 
 # %%
+import time
+
 import numpy as np
 import pyvista as pv
 from caveclient import CAVEclient
@@ -19,7 +21,8 @@ client = CAVEclient("minnie65_phase3_v1", version=1300)
 cv = client.info.segmentation_cloudvolume()
 
 # %%
-root_id = 864691135662877004
+# root_id = 864691135662877004
+root_id = 864691135279120289
 
 leaves = client.chunkedgraph.get_leaves(root_id, stop_layer=3)
 
@@ -35,7 +38,7 @@ mesh = (mesh.vertices, mesh.faces)
 
 bounds = np.array((mesh[0].min(axis=0), mesh[0].max(axis=0)))
 
-n_samples = 100000
+n_samples = 1_000_000
 
 indices = np.random.choice(len(mesh[0]), n_samples, replace=True)
 points = mesh[0][indices].copy()
@@ -43,7 +46,10 @@ points += np.random.normal(0, 100, points.shape)
 
 # %%
 
+currtime = time.time()
+
 out = fast_winding_number(points, mesh[0], mesh[1])
+print(f"{time.time() - currtime:.3f} seconds elapsed.")
 
 # %%
 
@@ -79,5 +85,7 @@ plotter.add_points(
 plotter.link_views()
 plotter.enable_fly_to_right_click()
 
-plotter.export_html("fast_winding.html")
+# plotter.export_html("fast_winding.html")
 plotter.show()
+
+# %%
