@@ -874,6 +874,29 @@ wheels = [
 ]
 
 [[package]]
+name = "fast-simplification"
+version = "0.1.7"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "numpy" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/7d/a4/fdff959db6fa460ae94f8571c93cd18c92a8eb8be32dd7b2ca837f3587ae/fast_simplification-0.1.7.tar.gz", hash = "sha256:5e44a71fc7d3321688c999952eb2c8dcc3ddbad5ba3f847b2b50eda50155fbe2", size = 26261 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/20/02/d9d028c1d03980462c8a36c4359f7fe8e609756c566881c04f02115f439e/fast_simplification-0.1.7-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:4b9ec0688f8e7fac810dc438bd1ea337a72b6fa60f86b7fae0a20090bf42f812", size = 492434 },
+    { url = "https://files.pythonhosted.org/packages/81/52/b8a26f5839498350d0b4e4c53dcb3833912bfaf237227ccf8d8fa873e922/fast_simplification-0.1.7-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:a19af01ed0b7b853f0d360caca108ee662e71a8c294e288e82d321aa0c94a457", size = 264079 },
+    { url = "https://files.pythonhosted.org/packages/7c/6f/d38a52418721a4e51260ecfbffd08ef134865f2a0b5b17c48bf23d5b03bb/fast_simplification-0.1.7-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:64848c4beb3f805e99840c08b3e16085c03cb06ea82d13a87e64a3ed8d3b7431", size = 1691493 },
+    { url = "https://files.pythonhosted.org/packages/f0/5f/a1fd8676fc382f3f9d9ee472b89a32c7f9ff9e38176d1489a2a439cf97e8/fast_simplification-0.1.7-cp310-cp310-win_amd64.whl", hash = "sha256:4316f80e271ffa3514153649f3fcff5cd5da952ba99641a8049e893df39982da", size = 211697 },
+    { url = "https://files.pythonhosted.org/packages/01/66/e42ef879f01db2f266884c50c7eb8f351a0921b028ce8e3a499a28cfedcd/fast_simplification-0.1.7-cp311-cp311-macosx_10_9_universal2.whl", hash = "sha256:b9db12e907ccb6400fd3922cd59432e8477ad72c00cb27983b303457dd18797f", size = 493842 },
+    { url = "https://files.pythonhosted.org/packages/a2/12/23c5a37b94a7cd941cad9a94f61fab2b33fce15f20a7fb153589a7300810/fast_simplification-0.1.7-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:df4119fe98cee6ef439ec390aea3b2bbb22a8e918d00ecd0807036700aeafe9c", size = 265468 },
+    { url = "https://files.pythonhosted.org/packages/db/69/17bacd1895c4fc8ac2e16cef268b39a85d37aeb40a2e71e522989241b288/fast_simplification-0.1.7-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:008e8459225e1d824f7ee53cc4a3859d025db1846397674b55e880df639fd731", size = 1771809 },
+    { url = "https://files.pythonhosted.org/packages/5c/e6/b5edd1fe1f8073e0944bc046ad44ad5c048ba38a381e5d225686416f6354/fast_simplification-0.1.7-cp311-cp311-win_amd64.whl", hash = "sha256:0ea7e65946be93a2891587631f4dd4f66f6bdeb879a7d3a0f8d218c703e67d11", size = 211946 },
+    { url = "https://files.pythonhosted.org/packages/4d/6e/3461459f501944cacbf267c3b1eaa6729e03f4fc66264ecb7b8989c29f7d/fast_simplification-0.1.7-cp312-cp312-macosx_10_9_universal2.whl", hash = "sha256:4a790983063194876b438d2e5beb73f4488821a9e52d31e711edc0fd2d815fdd", size = 488337 },
+    { url = "https://files.pythonhosted.org/packages/ac/2b/0de8530a23b356b849e5a3849823eed793815001d57a7655be9ad4020591/fast_simplification-0.1.7-cp312-cp312-macosx_10_9_x86_64.whl", hash = "sha256:8a999b236dc6ff9535895c9d36449aa896e88fda9c1775e1f869fb7a68238d04", size = 259266 },
+    { url = "https://files.pythonhosted.org/packages/2a/f0/541a5f78286e3318d770107d4107f893f2f0462819fb6cf1b4fffa1a7c76/fast_simplification-0.1.7-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:3305c6435d6bc4f90a17d812104c7d4c1a528e63bd8d3f42e40e357b778a99b8", size = 1753852 },
+    { url = "https://files.pythonhosted.org/packages/ca/4e/1775329202a494c8a22f337862823c0710858f10f31ba6acf54db600b74c/fast_simplification-0.1.7-cp312-cp312-win_amd64.whl", hash = "sha256:4deeeffc0a289efdcad89c8595a57cd05b60a73d74e4a030965c47322480e6b4", size = 211639 },
+]
+
+[[package]]
 name = "fasteners"
 version = "0.19"
 source = { registry = "https://pypi.org/simple" }
@@ -1373,6 +1396,15 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/00/2a/e867e8531cf3e36b41201936b7fa7ba7b5702dbef42922193f05c8976cd6/jmespath-1.0.1.tar.gz", hash = "sha256:90261b206d6defd58fdd5e85f478bf633a2901798906be2ad389150c5c60edbe", size = 25843 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/31/b4/b9b800c45527aadd64d5b442f9b932b00648617eb5d63d2c7a6587b7cafc/jmespath-1.0.1-py3-none-any.whl", hash = "sha256:02e2e4cc71b5bcab88332eebf907519190dd9e6e82107fa7f83b1003a6252980", size = 20256 },
+]
+
+[[package]]
+name = "joblib"
+version = "1.4.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/64/33/60135848598c076ce4b231e1b1895170f45fbcaeaa2c9d5e38b04db70c35/joblib-1.4.2.tar.gz", hash = "sha256:2382c5816b2636fbd20a09e0f4e9dad4736765fdfb7dca582943b9c1366b3f0e", size = 2116621 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/91/29/df4b9b42f2be0b623cbd5e2140cafcaa2bef0759a00b7b70104dcfe2fb51/joblib-1.4.2-py3-none-any.whl", hash = "sha256:06d478d5674cbc267e7496a410ee875abd68e4340feff4490bcb7afb88060ae6", size = 301817 },
 ]
 
 [[package]]
@@ -2932,6 +2964,35 @@ wheels = [
 ]
 
 [[package]]
+name = "scikit-learn"
+version = "1.6.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "joblib" },
+    { name = "numpy" },
+    { name = "scipy" },
+    { name = "threadpoolctl" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/9e/a5/4ae3b3a0755f7b35a280ac90b28817d1f380318973cff14075ab41ef50d9/scikit_learn-1.6.1.tar.gz", hash = "sha256:b4fc2525eca2c69a59260f583c56a7557c6ccdf8deafdba6e060f94c1c59738e", size = 7068312 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/2e/3a/f4597eb41049110b21ebcbb0bcb43e4035017545daa5eedcfeb45c08b9c5/scikit_learn-1.6.1-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:d056391530ccd1e501056160e3c9673b4da4805eb67eb2bdf4e983e1f9c9204e", size = 12067702 },
+    { url = "https://files.pythonhosted.org/packages/37/19/0423e5e1fd1c6ec5be2352ba05a537a473c1677f8188b9306097d684b327/scikit_learn-1.6.1-cp310-cp310-macosx_12_0_arm64.whl", hash = "sha256:0c8d036eb937dbb568c6242fa598d551d88fb4399c0344d95c001980ec1c7d36", size = 11112765 },
+    { url = "https://files.pythonhosted.org/packages/70/95/d5cb2297a835b0f5fc9a77042b0a2d029866379091ab8b3f52cc62277808/scikit_learn-1.6.1-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:8634c4bd21a2a813e0a7e3900464e6d593162a29dd35d25bdf0103b3fce60ed5", size = 12643991 },
+    { url = "https://files.pythonhosted.org/packages/b7/91/ab3c697188f224d658969f678be86b0968ccc52774c8ab4a86a07be13c25/scikit_learn-1.6.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:775da975a471c4f6f467725dff0ced5c7ac7bda5e9316b260225b48475279a1b", size = 13497182 },
+    { url = "https://files.pythonhosted.org/packages/17/04/d5d556b6c88886c092cc989433b2bab62488e0f0dafe616a1d5c9cb0efb1/scikit_learn-1.6.1-cp310-cp310-win_amd64.whl", hash = "sha256:8a600c31592bd7dab31e1c61b9bbd6dea1b3433e67d264d17ce1017dbdce8002", size = 11125517 },
+    { url = "https://files.pythonhosted.org/packages/6c/2a/e291c29670795406a824567d1dfc91db7b699799a002fdaa452bceea8f6e/scikit_learn-1.6.1-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:72abc587c75234935e97d09aa4913a82f7b03ee0b74111dcc2881cba3c5a7b33", size = 12102620 },
+    { url = "https://files.pythonhosted.org/packages/25/92/ee1d7a00bb6b8c55755d4984fd82608603a3cc59959245068ce32e7fb808/scikit_learn-1.6.1-cp311-cp311-macosx_12_0_arm64.whl", hash = "sha256:b3b00cdc8f1317b5f33191df1386c0befd16625f49d979fe77a8d44cae82410d", size = 11116234 },
+    { url = "https://files.pythonhosted.org/packages/30/cd/ed4399485ef364bb25f388ab438e3724e60dc218c547a407b6e90ccccaef/scikit_learn-1.6.1-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:dc4765af3386811c3ca21638f63b9cf5ecf66261cc4815c1db3f1e7dc7b79db2", size = 12592155 },
+    { url = "https://files.pythonhosted.org/packages/a8/f3/62fc9a5a659bb58a03cdd7e258956a5824bdc9b4bb3c5d932f55880be569/scikit_learn-1.6.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:25fc636bdaf1cc2f4a124a116312d837148b5e10872147bdaf4887926b8c03d8", size = 13497069 },
+    { url = "https://files.pythonhosted.org/packages/a1/a6/c5b78606743a1f28eae8f11973de6613a5ee87366796583fb74c67d54939/scikit_learn-1.6.1-cp311-cp311-win_amd64.whl", hash = "sha256:fa909b1a36e000a03c382aade0bd2063fd5680ff8b8e501660c0f59f021a6415", size = 11139809 },
+    { url = "https://files.pythonhosted.org/packages/0a/18/c797c9b8c10380d05616db3bfb48e2a3358c767affd0857d56c2eb501caa/scikit_learn-1.6.1-cp312-cp312-macosx_10_13_x86_64.whl", hash = "sha256:926f207c804104677af4857b2c609940b743d04c4c35ce0ddc8ff4f053cddc1b", size = 12104516 },
+    { url = "https://files.pythonhosted.org/packages/c4/b7/2e35f8e289ab70108f8cbb2e7a2208f0575dc704749721286519dcf35f6f/scikit_learn-1.6.1-cp312-cp312-macosx_12_0_arm64.whl", hash = "sha256:2c2cae262064e6a9b77eee1c8e768fc46aa0b8338c6a8297b9b6759720ec0ff2", size = 11167837 },
+    { url = "https://files.pythonhosted.org/packages/a4/f6/ff7beaeb644bcad72bcfd5a03ff36d32ee4e53a8b29a639f11bcb65d06cd/scikit_learn-1.6.1-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:1061b7c028a8663fb9a1a1baf9317b64a257fcb036dae5c8752b2abef31d136f", size = 12253728 },
+    { url = "https://files.pythonhosted.org/packages/29/7a/8bce8968883e9465de20be15542f4c7e221952441727c4dad24d534c6d99/scikit_learn-1.6.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:2e69fab4ebfc9c9b580a7a80111b43d214ab06250f8a7ef590a4edf72464dd86", size = 13147700 },
+    { url = "https://files.pythonhosted.org/packages/62/27/585859e72e117fe861c2079bcba35591a84f801e21bc1ab85bce6ce60305/scikit_learn-1.6.1-cp312-cp312-win_amd64.whl", hash = "sha256:70b1d7e85b1c96383f872a519b3375f92f14731e279a7b4c6cfd650cf5dffc52", size = 11110613 },
+]
+
+[[package]]
 name = "scipy"
 version = "1.15.2"
 source = { registry = "https://pypi.org/simple" }
@@ -3145,21 +3206,34 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "caveclient", extra = ["cv"] },
+    { name = "fast-simplification" },
     { name = "gpytoolbox" },
     { name = "ipykernel" },
     { name = "pandas" },
     { name = "pyvista", extra = ["all"] },
+    { name = "scikit-learn" },
     { name = "seaborn" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "caveclient", extras = ["cv"], specifier = ">=7.6.0" },
+    { name = "fast-simplification", specifier = ">=0.1.7" },
     { name = "gpytoolbox", specifier = ">=0.3.3" },
     { name = "ipykernel" },
     { name = "pandas", specifier = ">=2.2.3" },
     { name = "pyvista", extras = ["all"], specifier = ">=0.44.2" },
+    { name = "scikit-learn", specifier = ">=1.6.1" },
     { name = "seaborn", specifier = ">=0.13.2" },
+]
+
+[[package]]
+name = "threadpoolctl"
+version = "3.5.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/bd/55/b5148dcbf72f5cde221f8bfe3b6a540da7aa1842f6b491ad979a6c8b84af/threadpoolctl-3.5.0.tar.gz", hash = "sha256:082433502dd922bf738de0d8bcc4fdcbf0979ff44c42bd40f5af8a282f6fa107", size = 41936 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/4b/2c/ffbf7a134b9ab11a67b0cf0726453cedd9c5043a4fe7a35d1cefa9a1bcfb/threadpoolctl-3.5.0-py3-none-any.whl", hash = "sha256:56c1e26c150397e58c4926da8eeee87533b1e32bef131bd4bf6a2f45f3185467", size = 18414 },
 ]
 
 [[package]]
