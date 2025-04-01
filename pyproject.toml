@@ -5,6 +5,7 @@ dependencies = [
     "gpytoolbox>=0.3.3",
     "ipykernel",
     "meshio>=5.3.5",
+    "nglui>=3.8.2",
     "pandas>=2.2.3",
     "pcg-skel>=1.3.0",
     "pyvista[all]>=0.44.2",

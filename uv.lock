@@ -185,6 +185,12 @@ wheels = [
 ]
 
 [[package]]
+name = "atomicwrites"
+version = "1.4.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/87/c6/53da25344e3e3a9c01095a89f16dbcda021c609ddb42dd6d7c0528236fb2/atomicwrites-1.4.1.tar.gz", hash = "sha256:81b2c9071a49367a7f770170e5eec8cb66567cfbbc8c73d20ce5ca4a8d71cf11", size = 14227 }
+
+[[package]]
 name = "attrs"
 version = "24.3.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1173,6 +1179,21 @@ wheels = [
 ]
 
 [[package]]
+name = "google-apitools"
+version = "0.5.32"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "fasteners" },
+    { name = "httplib2" },
+    { name = "oauth2client" },
+    { name = "six" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/dc/eb/c26c36463a769a3a9f08847b9bf218cb629ca91877a911bbd6dcf37d9e62/google-apitools-0.5.32.tar.gz", hash = "sha256:c3763e52289f61e21c41d5531e20fbda9cc8484a088b8686fd460770db8bad13", size = 172810 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/5e/cb/cb0311f2ec371c83d6510847476c665edc9cc97564a51923557bc8f0b680/google_apitools-0.5.32-py3-none-any.whl", hash = "sha256:b78f74116558e0476e19501b5b4b2ac7c93261a69c5449c861ea95cbc853c688", size = 135651 },
+]
+
+[[package]]
 name = "google-auth"
 version = "2.38.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1351,6 +1372,18 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/9e/d9/aed99e1c858dc698489f916eeb7c07513bc864885d28ab3689d572ba0ea0/h5py-3.13.0-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:357e6dc20b101a805ccfd0024731fbaf6e8718c18c09baf3b5e4e9d198d13fca", size = 4669544 },
     { url = "https://files.pythonhosted.org/packages/a7/da/3c137006ff5f0433f0fb076b1ebe4a7bf7b5ee1e8811b5486af98b500dd5/h5py-3.13.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:d6f13f9b5ce549448c01e4dfe08ea8d1772e6078799af2c1c8d09e941230a90d", size = 4932139 },
     { url = "https://files.pythonhosted.org/packages/25/61/d897952629cae131c19d4c41b2521e7dd6382f2d7177c87615c2e6dced1a/h5py-3.13.0-cp312-cp312-win_amd64.whl", hash = "sha256:21daf38171753899b5905f3d82c99b0b1ec2cbbe282a037cad431feb620e62ec", size = 2954179 },
+]
+
+[[package]]
+name = "httplib2"
+version = "0.22.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "pyparsing" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/3d/ad/2371116b22d616c194aa25ec410c9c6c37f23599dcd590502b74db197584/httplib2-0.22.0.tar.gz", hash = "sha256:d7a10bc5ef5ab08322488bde8c726eeee5c8618723fdb399597ec58f3d82df81", size = 351116 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/a8/6c/d2fbdaaa5959339d53ba38e94c123e4e84b8fbc4b84beb0e70d7c1608486/httplib2-0.22.0-py3-none-any.whl", hash = "sha256:14ae0a53c1ba8f3d37e9e27cf37eabb0fb9980f435ba405d546948b009dd64dc", size = 96854 },
 ]
 
 [[package]]
@@ -2235,6 +2268,48 @@ wheels = [
 ]
 
 [[package]]
+name = "neuroglancer"
+version = "2.40.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "atomicwrites" },
+    { name = "google-apitools" },
+    { name = "google-auth" },
+    { name = "numpy" },
+    { name = "pillow" },
+    { name = "requests" },
+    { name = "tornado" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/fe/68/600011755c7873d69431c2662bf631414e417d283b8cc7976dfa66178800/neuroglancer-2.40.1.tar.gz", hash = "sha256:ba21309827810d669a2f76e7b814a123aafeb61b7cb07b2de11a9663ad902fdc", size = 3640302 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/59/52/3890bdc3345a1885a6eac6d4b982124d4820c11b706ce179b76c26b3eaea/neuroglancer-2.40.1-cp39-abi3-macosx_10_9_x86_64.whl", hash = "sha256:73b214772263005e2531dab6051ed1f4d5cd4c4f1c6eb181b9baf704ecb6f3f3", size = 3649794 },
+    { url = "https://files.pythonhosted.org/packages/a7/37/214037aec09f43e1854173fc338eb5f20f2b2f6d57ccf9dfc9f4032b1567/neuroglancer-2.40.1-cp39-abi3-macosx_11_0_arm64.whl", hash = "sha256:7466279b2cad28465edc727b994949599d2f0ece9ca22cee05bfa30c1d63a1ac", size = 3644923 },
+    { url = "https://files.pythonhosted.org/packages/2f/a2/e0e01c70d7a6804eb00faeb901af341ca5518b9d58c444c133d300c48b83/neuroglancer-2.40.1-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:b5cb9583b1668aad49c092bb047d6e74959bb3b5b343d5a624f084d82f3ede60", size = 5138950 },
+    { url = "https://files.pythonhosted.org/packages/23/d9/29ae513f60f0d972789453f14b22753d9becc303f0ad7e797cf6b4878580/neuroglancer-2.40.1-cp39-abi3-win_amd64.whl", hash = "sha256:dc70a9dcd438c763515a2ca36135d10a49bd3261ac3fcf0b9183c03411554295", size = 3622988 },
+]
+
+[[package]]
+name = "nglui"
+version = "3.8.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "attrs" },
+    { name = "caveclient" },
+    { name = "ipython" },
+    { name = "neuroglancer" },
+    { name = "numpy" },
+    { name = "pandas" },
+    { name = "python-box" },
+    { name = "requests" },
+    { name = "six" },
+    { name = "webcolors" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/8c/6b/cf803db85f0efa0ee93cf65f21108ed063781f0c834d9360dbf7b3868538/nglui-3.8.2.tar.gz", hash = "sha256:b1cb3d82e6b1749504ef9aa943c34d5d934814f8992cea203d4611ee8935e9e8", size = 983496 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/26/65/682fe1f5d8aa08e9185a040f4432d01aa82a20c16f9e002456b8cbc2a99b/nglui-3.8.2-py3-none-any.whl", hash = "sha256:9865c0111e95850ae4f78479aa913075ddd4e979ffca0c4b1b8cddc4dd4ac6ee", size = 77358 },
+]
+
+[[package]]
 name = "numexpr"
 version = "2.10.2"
 source = { registry = "https://pypi.org/simple" }
@@ -2296,6 +2371,22 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/76/8c/2ba3902e1a0fc1c74962ea9bb33a534bb05984ad7ff9515bf8d07527cadd/numpy-1.26.4-cp312-cp312-musllinux_1_1_x86_64.whl", hash = "sha256:1dda2e7b4ec9dd512f84935c5f126c8bd8b9f2fc001e9f54af255e8c5f16b0e0", size = 17786643 },
     { url = "https://files.pythonhosted.org/packages/28/4a/46d9e65106879492374999e76eb85f87b15328e06bd1550668f79f7b18c6/numpy-1.26.4-cp312-cp312-win32.whl", hash = "sha256:50193e430acfc1346175fcbdaa28ffec49947a06918b7b92130744e81e640110", size = 5677803 },
     { url = "https://files.pythonhosted.org/packages/16/2e/86f24451c2d530c88daf997cb8d6ac622c1d40d19f5a031ed68a4b73a374/numpy-1.26.4-cp312-cp312-win_amd64.whl", hash = "sha256:08beddf13648eb95f8d867350f6a018a4be2e5ad54c8d8caed89ebca558b2818", size = 15517754 },
+]
+
+[[package]]
+name = "oauth2client"
+version = "4.1.3"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "httplib2" },
+    { name = "pyasn1" },
+    { name = "pyasn1-modules" },
+    { name = "rsa" },
+    { name = "six" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/a6/7b/17244b1083e8e604bf154cf9b716aecd6388acd656dd01893d0d244c94d9/oauth2client-4.1.3.tar.gz", hash = "sha256:d486741e451287f69568a4d26d70d9acd73a2bbfa275746c535b4209891cccc6", size = 155910 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/95/a9/4f25a14d23f0786b64875b91784607c2277eff25d48f915e39ff0cff505a/oauth2client-4.1.3-py2.py3-none-any.whl", hash = "sha256:b8a81cc5d60e2d364f0b1b98f958dbd472887acaf1a5b05e21c28c31a2d6d3ac", size = 98206 },
 ]
 
 [[package]]
@@ -2890,6 +2981,24 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/05/35/30e0d83068951d90a01852cb1cef56e5d8a09d20c7f511634cc2f7e0372a/pytest-8.3.4.tar.gz", hash = "sha256:965370d062bce11e73868e0335abac31b4d3de0e82f4007408d242b4f8610761", size = 1445919 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/11/92/76a1c94d3afee238333bc0a42b82935dd8f9cf8ce9e336ff87ee14d9e1cf/pytest-8.3.4-py3-none-any.whl", hash = "sha256:50e16d954148559c9a74109af1eaf0c945ba2d8f30f0a3d3335edde19788b6f6", size = 343083 },
+]
+
+[[package]]
+name = "python-box"
+version = "7.3.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/29/f7/635eed8c500adf26208e86e985bbffb6ff039cd8950e3a4749ceca904218/python_box-7.3.2.tar.gz", hash = "sha256:028b9917129e67f311932d93347b8a4f1b500d7a5a2870ee3c035f4e7b19403b", size = 45771 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/ef/ee/7d9a4bc3ac4e693018506fb21893f4ba253694fd31dd93f7195f57a6c8d0/python_box-7.3.2-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:d136163294fd61a1554db7dd203f2e3035064798d30c17d67d948f0de5c572de", size = 1832073 },
+    { url = "https://files.pythonhosted.org/packages/25/be/97c585206086f50175b72e31f092f0afb3de43013d040097c1febbc7a2ce/python_box-7.3.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:47d72e96547d8e2c2c333909826e9fae338d9a7e4cde07d5c6058cdd468432c0", size = 3954019 },
+    { url = "https://files.pythonhosted.org/packages/34/6b/95d1f13ae2c2c72854f8e845385312693a67ba0b2c9499d57476d8394c61/python_box-7.3.2-cp310-cp310-win_amd64.whl", hash = "sha256:3aa52e3b5cc50c80bb7ef4be3e41e81d095310f619454a7ffd61eef3209a6225", size = 1229788 },
+    { url = "https://files.pythonhosted.org/packages/1e/3f/133619c00d8a9d4f86efd8626c0e4ec356c8b8dabac66da18dac5cfaf70c/python_box-7.3.2-cp311-cp311-macosx_10_9_universal2.whl", hash = "sha256:32163b1cb151883de0da62b0cd3572610dc72ccf0762f2447baf1d2562e25bea", size = 1834122 },
+    { url = "https://files.pythonhosted.org/packages/b7/52/51b6081562daa864847692536260200b337ccb4176d1e5f626ae48a7d493/python_box-7.3.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:064cb59b41e25aaf7dbd39efe53151a5f6797cc1cb3c68610f0f21a9d406d67e", size = 4305556 },
+    { url = "https://files.pythonhosted.org/packages/d4/e2/6cdc8649381ae14def88c3e2e93d5b8b17a622a95896e0d1c92861270b7d/python_box-7.3.2-cp311-cp311-win_amd64.whl", hash = "sha256:488f0fba9a6416c3334b602366dcd92825adb0811e07e03753dfcf0ed79cd6f7", size = 1232328 },
+    { url = "https://files.pythonhosted.org/packages/45/68/0c2f289d8055d3e1b156ff258847f0e8f1010063e284cf5a612f09435575/python_box-7.3.2-cp312-cp312-macosx_10_13_universal2.whl", hash = "sha256:39009a2da5c20133718b24891a206592adbe09169856aedc450ad1600fc2e511", size = 1819681 },
+    { url = "https://files.pythonhosted.org/packages/ce/5d/76b4d6d0e41edb676a229f032848a1ecea166890fa8d501513ea1a030f4d/python_box-7.3.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:2e2a72e2f6fb97c7e472ff3272da207ecc615aa222e52e98352391428527c469", size = 4270424 },
+    { url = "https://files.pythonhosted.org/packages/e4/6b/32484b2a3cd2fb5e5f56bfb53a4537d93a4d2014ccf7fc0c0017fa6f65e9/python_box-7.3.2-cp312-cp312-win_amd64.whl", hash = "sha256:9eead914b9fb7d98a1473f5027dcfe27d26b3a10ffa33b9ba22cf948a23cd280", size = 1211252 },
+    { url = "https://files.pythonhosted.org/packages/37/13/8a990c6e2b6cc12700dce16f3cb383324e6d9a30f604eca22a2fdf84c923/python_box-7.3.2-py3-none-any.whl", hash = "sha256:fd7d74d5a848623f93b5221fd9fb00b8c00ff0e130fa87f396277aa188659c92", size = 29479 },
 ]
 
 [[package]]
@@ -3613,6 +3722,7 @@ dependencies = [
     { name = "gpytoolbox" },
     { name = "ipykernel" },
     { name = "meshio" },
+    { name = "nglui" },
     { name = "pandas" },
     { name = "pcg-skel" },
     { name = "pyvista", extra = ["all"] },
@@ -3628,6 +3738,7 @@ requires-dist = [
     { name = "gpytoolbox", specifier = ">=0.3.3" },
     { name = "ipykernel" },
     { name = "meshio", specifier = ">=5.3.5" },
+    { name = "nglui", specifier = ">=3.8.2" },
     { name = "pandas", specifier = ">=2.2.3" },
     { name = "pcg-skel", specifier = ">=1.3.0" },
     { name = "pyvista", extras = ["all"], specifier = ">=0.44.2" },
