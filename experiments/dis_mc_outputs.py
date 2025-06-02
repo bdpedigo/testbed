@@ -118,6 +118,11 @@ for i in range(len(synapse_group_table)):
 synapse_group_table["mc_id"] = mc_ids
 
 # %%
+synapse_group_table.to_csv(
+    "/Users/ben.pedigo/code/testbed/outs/synapse_group_table.csv"
+)
+coincident_syns.to_csv("/Users/ben.pedigo/code/testbed/outs/coincident_syns.csv")
+# %%
 
 
 fixed_ids = source_cell_info["pt_root_id"].values.tolist()

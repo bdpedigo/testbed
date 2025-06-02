@@ -46,7 +46,7 @@ mesh = (vertices, faces)
 
 # plotter.show()
 
-# %%
+
 # %%
 from typing import Optional
 
@@ -56,11 +56,16 @@ import pandas as pd
 from caveclient import CAVEclient
 from skeletor.skeletonize import by_wavefront
 
-skeleton = by_wavefront(mesh, waves=10, step_size=1)
+skeleton = by_wavefront(mesh, waves=1, step_size=1)
 
-#%%
+# %%
+np.savetxt("bv_vertices.csv", skeleton.vertices, delimiter=",")
+np.savetxt("bv_edges.csv", skeleton.edges.astype(int), fmt="%i", delimiter=",")
 
-#%%
+np.loadtxt("bv_vertices.csv", delimiter=",")
+np.loadtxt("bv_edges.csv", delimiter=",").astype(int)
+# %%
+
 
 def create_skeleton_bucket(
     bucket_path: str, client: CAVEclient, vertex_attributes: list[str]
