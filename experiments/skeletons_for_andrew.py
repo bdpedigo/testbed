@@ -1,3 +1,17 @@
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "caveclient",
+#     "matplotlib",
+#     "ossify",
+#     "polars",
+#     "seaborn",
+# ]
+#
+# [tool.uv.sources]
+# ossify = { git = "https://github.com/bdpedigo/ossify.git", rev = "69348ca" }
+# ///
+
 # %%
 import time
 
@@ -299,22 +313,6 @@ ax.set_yscale("log")
 # %%
 # Another question I have: Of axons making synapses onto VIP neurons that arise within
 # the volume, where are their somas located?
-
-
-# partner_df = client.materialize.query_table(
-#     "nucleus_detection_v0",
-#     timestamp=ts,
-#     filter_in_dict={"pt_root_id": partner_counts.index},
-#     desired_resolution=[1, 1, 1],
-#     split_positions=True,
-# )
-# proofreading_df = client.materialize.query_table(
-#     "proofreading_status_and_strategy",
-#     timestamp=ts,
-# )
-# axon_clean_cells = proofreading_df.query("status_axon == 't'")["pt_root_id"].unique()
-
-# partner_df["is_clean_axon"] = partner_df["pt_root_id"].isin(axon_clean_cells)
 
 cell_df = (
     client.materialize.query_view(
