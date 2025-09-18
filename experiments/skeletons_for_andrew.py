@@ -2,6 +2,7 @@
 # requires-python = ">=3.12"
 # dependencies = [
 #     "caveclient",
+#     "deltalake",
 #     "matplotlib",
 #     "ossify",
 #     "polars",
