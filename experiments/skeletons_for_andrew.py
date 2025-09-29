@@ -15,9 +15,11 @@
 
 # %%
 import time
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 import ossify  # https://github.com/bdpedigo/ossify.git@69348ca
+import pandas as pd
 import polars as pl
 import seaborn as sns
 from caveclient import CAVEclient
@@ -33,10 +35,39 @@ client = CAVEclient("minnie65_phase3_v1")
 # interneurons? How does this vary with distance from the soma? Compare density of
 # synapses allocated to different dendritic compartments
 
+ids_path = Path("/Users/ben.pedigo/code/testbed/data/2025-02-28_segIDs.csv")
+
+ids_df = pd.read_csv(ids_path, dtype={"root_id": "Int64", "ct": str})
+ids_df = ids_df.dropna()
+ids_df["root_id"] = ids_df["root_id"].astype(int)
+
+# %%
+
+
+prediction_path = Path(
+    "/Users/ben.pedigo/code/meshrep/meshrep/data/auburn_elk_detour_predictions_deltalake"
+)
+all_post_syns = client.materialize.synapse_query(post_ids=ids_df["root_id"].tolist())
+# %%
+synapse_ids = all_post_syns["id"].unique()
+postsyn_predictions = (
+    pl.scan_delta(prediction_path)
+    .filter(pl.col("synapse_id").is_in(synapse_ids))
+    .select(["synapse_id", "label", "p_soma", "p_shaft", "p_spine"])
+    .collect()
+    .to_pandas()
+    .set_index("synapse_id")
+)
+postsyn_predictions.to_csv(
+    "/Users/ben.pedigo/code/testbed/data/postsyn_predictions_for_2025-02-28.csv.gz"
+)
+
+
 # %%
 
 currtime = time.time()
 
+# root_id = ids_df.iloc[0]["root_id"]
 ts = client.chunkedgraph.get_root_timestamps([root_id], latest=True)[0]
 cell = ossify.load_cell_from_client(
     root_id,
@@ -51,10 +82,7 @@ print(f"{time.time() - currtime:.3f} seconds elapsed.")
 
 # %%
 
-# prediction_path = Path(
-#     "/Users/ben.pedigo/code/meshrep/meshrep/data/auburn_elk_detour_predictions_deltalake"
-# )
-prediction_path = "gs://bdp-ssa/minnie65_phase3_v1/absolute-solo-yak/1412/auburn-elk-detour-synapse_hks_model/post-synapse-predictions-deltalake"
+# prediction_path = "gs://bdp-ssa/minnie65_phase3_v1/absolute-solo-yak/1412/auburn-elk-detour-synapse_hks_model/post-synapse-predictions-deltalake"
 synapse_ids = cell.annotations.post_syn.nodes.index
 currtime = time.time()
 postsyn_predictions = (
@@ -343,5 +371,14 @@ ax.scatter(
 # TODO both of these are hard, for a few reasons... I can get them to you but not this week
 # What is the distribution of mono/polysynaptic spines for multipolar VIP neurons?
 # Are they E-E, E-I, I-I?
+
+# %%
+
+mvip_root_ids = ids_df.query("ct == 'mVIP'")["root_id"].unique()
+all_syns = []
+for root_id in mvip_root_ids:
+    ts = client.chunkedgraph.get_root_timestamps([root_id], latest=True)[0]
+    syns = client.materialize.synapse_query(post_ids=root_id, timestamp=ts)
+    # all_syns.extend(syns
 
 # %%
