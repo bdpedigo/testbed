@@ -40,35 +40,59 @@ ids_path = Path("/Users/ben.pedigo/code/testbed/data/2025-02-28_segIDs.csv")
 ids_df = pd.read_csv(ids_path, dtype={"root_id": "Int64", "ct": str})
 ids_df = ids_df.dropna()
 ids_df["root_id"] = ids_df["root_id"].astype(int)
+ids_df = ids_df.drop_duplicates("root_id").reset_index(drop=True)
+root_ids = ids_df["root_id"].unique().tolist()
+timestamps = client.chunkedgraph.get_root_timestamps(root_ids, latest=True)
+ids_df["timestamp"] = timestamps
+ids_df = ids_df.set_index("root_id")
 
 # %%
-
-
-prediction_path = Path(
-    "/Users/ben.pedigo/code/meshrep/meshrep/data/auburn_elk_detour_predictions_deltalake"
-)
-all_post_syns = client.materialize.synapse_query(post_ids=ids_df["root_id"].tolist())
-# %%
-synapse_ids = all_post_syns["id"].unique()
-postsyn_predictions = (
-    pl.scan_delta(prediction_path)
-    .filter(pl.col("synapse_id").is_in(synapse_ids))
-    .select(["synapse_id", "label", "p_soma", "p_shaft", "p_spine"])
-    .collect()
-    .to_pandas()
-    .set_index("synapse_id")
-)
-postsyn_predictions.to_csv(
-    "/Users/ben.pedigo/code/testbed/data/postsyn_predictions_for_2025-02-28.csv.gz"
-)
+all_synapse_ids = []
+for timestamp, ids_chunk in ids_df.reset_index().groupby("timestamp"):
+    print(timestamp)
+    post_syns_chunk = client.materialize.synapse_query(
+        post_ids=ids_chunk["root_id"].tolist(), timestamp=timestamp
+    )
+    all_synapse_ids.extend(post_syns_chunk["id"])
 
 
 # %%
 
+if False:
+    # NOTE: this was just for Ben pulling the synapse prediction data, shouldn't need to
+    # to be run again
+    prediction_path = Path(
+        "/Users/ben.pedigo/code/meshrep/meshrep/data/auburn_elk_detour_predictions_deltalake"
+    )
+
+    all_postsyn_predictions = (
+        pl.scan_delta(prediction_path)
+        .filter(pl.col("synapse_id").is_in(all_synapse_ids))
+        .select(["synapse_id", "label", "p_soma", "p_shaft", "p_spine"])
+        .collect()
+        .to_pandas()
+        .set_index("synapse_id")
+    )
+    all_postsyn_predictions.to_csv(
+        "/Users/ben.pedigo/code/testbed/public_data/postsyn_predictions_for_2025-02-28.csv.gz"
+    )
+    # postsyn_predictions = (
+    # pl.scan_delta(prediction_path)
+    # .filter(pl.col("synapse_id").is_in(synapse_ids))
+    # .select(["synapse_id", "label"])
+    # .collect()
+    # .to_pandas()
+    # .set_index("synapse_id")
+    # )
+else:
+    all_postsyn_predictions = pd.read_csv(
+        "https://github.com/bdpedigo/testbed/raw/refs/heads/main/public_data/postsyn_predictions_for_2025-02-28.csv.gz"
+    ).set_index("synapse_id")
+
+# %%
 currtime = time.time()
 
 # root_id = ids_df.iloc[0]["root_id"]
-ts = client.chunkedgraph.get_root_timestamps([root_id], latest=True)[0]
 cell = ossify.load_cell_from_client(
     root_id,
     client,
@@ -76,23 +100,19 @@ cell = ossify.load_cell_from_client(
     restore_graph=False,
     restore_properties=True,
     include_partner_root_id=True,
-    timestamp=ts,
+    timestamp=ids_df.loc[root_id]["timestamp"],
 )
 print(f"{time.time() - currtime:.3f} seconds elapsed.")
 
 # %%
 
-# prediction_path = "gs://bdp-ssa/minnie65_phase3_v1/absolute-solo-yak/1412/auburn-elk-detour-synapse_hks_model/post-synapse-predictions-deltalake"
-synapse_ids = cell.annotations.post_syn.nodes.index
 currtime = time.time()
-postsyn_predictions = (
-    pl.scan_delta(prediction_path)
-    .filter(pl.col("synapse_id").is_in(synapse_ids))
-    .select(["synapse_id", "label"])
-    .collect()
-    .to_pandas()
-    .set_index("synapse_id")
-)
+
+synapse_ids = cell.annotations.post_syn.nodes.index
+postsyn_predictions = all_postsyn_predictions.loc[
+    all_postsyn_predictions.index.intersection(synapse_ids)
+]
+
 print(f"{time.time() - currtime:.3f} seconds elapsed.")
 
 # %%
