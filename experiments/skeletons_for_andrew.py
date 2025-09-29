@@ -115,6 +115,8 @@ postsyn_predictions = all_postsyn_predictions.loc[
 
 print(f"{time.time() - currtime:.3f} seconds elapsed.")
 
+postsyn_predictions
+
 # %%
 cell.annotations.post_syn.nodes["tag"] = postsyn_predictions["label"]
 cell.annotations.post_syn.nodes["tag"] = cell.annotations.post_syn.nodes["tag"].fillna(
@@ -394,11 +396,11 @@ ax.scatter(
 
 # %%
 
-mvip_root_ids = ids_df.query("ct == 'mVIP'")["root_id"].unique()
-all_syns = []
-for root_id in mvip_root_ids:
-    ts = client.chunkedgraph.get_root_timestamps([root_id], latest=True)[0]
-    syns = client.materialize.synapse_query(post_ids=root_id, timestamp=ts)
-    # all_syns.extend(syns
+# mvip_root_ids = ids_df.query("ct == 'mVIP'")["root_id"].unique()
+# all_syns = []
+# for root_id in mvip_root_ids:
+#     ts = client.chunkedgraph.get_root_timestamps([root_id], latest=True)[0]
+#     syns = client.materialize.synapse_query(post_ids=root_id, timestamp=ts)
+#     # all_syns.extend(syns
 
 # %%
