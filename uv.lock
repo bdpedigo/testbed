@@ -461,7 +461,7 @@ wheels = [
 
 [[package]]
 name = "cloud-volume"
-version = "12.5.0"
+version = "12.6.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "boto3" },
@@ -493,9 +493,9 @@ dependencies = [
     { name = "tqdm" },
     { name = "urllib3", extra = ["brotli"] },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/48/e7/16232b25c5472a7a104869bca2da9c958ac44ede84a2202d395e8cfff716/cloud_volume-12.5.0.tar.gz", hash = "sha256:dcf8044cdd0f6bfc8ed96e64b9cfc5b2ec46df8c58715dd5d5a148b8b3cce991", size = 256623 }
+sdist = { url = "https://files.pythonhosted.org/packages/16/fd/fc3adb0bae6e899a52b93cd758e565b586095c2e4322b6c73fb19b24f3ce/cloud_volume-12.6.2.tar.gz", hash = "sha256:e101c83975c07fbc3bc28d19cc00d8463ecd02fb0e90dcb55f1c2939b7aa8dac", size = 258164 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/38/c8/3abbea95d55735fa98f2f74cf4d2e640e8aef619db895357e65d56fb5a26/cloud_volume-12.5.0-py3-none-any.whl", hash = "sha256:741e0932494dcd19eff2a56c0c916401dc5a10e011669f606f521725f113ac65", size = 223463 },
+    { url = "https://files.pythonhosted.org/packages/22/59/25fcc9775a15bc8f01c30b2cfd847ca7db7502a7c3838a2619d0aaec7581/cloud_volume-12.6.2-py3-none-any.whl", hash = "sha256:8ca515d5efe594b0fd823ce6dfda14ba6b2a63213d8fbb4f16478cd6a0abb679", size = 224647 },
 ]
 
 [[package]]
@@ -596,8 +596,8 @@ wheels = [
 
 [[package]]
 name = "cortical-tools"
-version = "0.0.4"
-source = { git = "https://github.com/ceesem/cortical-tools.git#565c4f5e8ad3b5c5d5f356e1b350471b73c312d2" }
+version = "0.0.5"
+source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "caveclient" },
     { name = "cloud-volume" },
@@ -608,6 +608,10 @@ dependencies = [
     { name = "pcg-skel" },
     { name = "standard-transform" },
     { name = "tqdm-joblib" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/1a/c5/63497ba0f072aab399297563669ff58c03f4a1497e46d87b1c984c58bd0b/cortical_tools-0.0.5.tar.gz", hash = "sha256:de1c9a9fc68facd6975e5e204d0e95cc50780f4fb5fea3049f58ca19515b4fee", size = 576318 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/ac/0c/8f8503590d6f5e5cb77c1fe7bf2263e425309c02ff9ea32b1642cdb3e3f8/cortical_tools-0.0.5-py3-none-any.whl", hash = "sha256:fa8f2226b359514fddaab403875c8c61ac1d2456edf47840a031d5652569e949", size = 27635 },
 ]
 
 [[package]]
@@ -3099,6 +3103,7 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "caveclient", extra = ["cv"] },
+    { name = "cloud-volume" },
     { name = "cortical-tools" },
     { name = "deltalake" },
     { name = "fast-simplification" },
@@ -3119,7 +3124,8 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "caveclient", extras = ["cv"], specifier = ">=7.6.0" },
-    { name = "cortical-tools", git = "https://github.com/ceesem/cortical-tools.git" },
+    { name = "cloud-volume", specifier = "==12.6.2" },
+    { name = "cortical-tools", specifier = ">=0.0.5" },
     { name = "deltalake", specifier = ">=1.1.4" },
     { name = "fast-simplification", specifier = ">=0.1.7" },
     { name = "gpytoolbox", specifier = ">=0.3.3" },

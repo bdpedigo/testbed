@@ -6,6 +6,7 @@
 #     "matplotlib",
 #     "ossify",
 #     "polars",
+#     "pyvista",
 #     "seaborn",
 # ]
 #
@@ -18,16 +19,19 @@ import time
 from pathlib import Path
 
 import matplotlib.pyplot as plt
+import numpy as np
 import ossify  # https://github.com/bdpedigo/ossify.git@69348ca
 import pandas as pd
 import polars as pl
+import pyvista as pv
 import seaborn as sns
 from caveclient import CAVEclient
 from matplotlib.collections import LineCollection
 
 root_id = 864691135654097346  # bVIP
 root_id = 864691135938202165  # bVIP
-root_id = 864691135136756761  # mVIP
+# root_id = 864691135136756761  # mVIP
+
 client = CAVEclient("minnie65_phase3_v1")
 
 # %%
@@ -46,19 +50,18 @@ timestamps = client.chunkedgraph.get_root_timestamps(root_ids, latest=True)
 ids_df["timestamp"] = timestamps
 ids_df = ids_df.set_index("root_id")
 
-# %%
-all_synapse_ids = []
-for timestamp, ids_chunk in ids_df.reset_index().groupby("timestamp"):
-    print(timestamp)
-    post_syns_chunk = client.materialize.synapse_query(
-        post_ids=ids_chunk["root_id"].tolist(), timestamp=timestamp
-    )
-    all_synapse_ids.extend(post_syns_chunk["id"])
-
 
 # %%
 
 if False:
+    all_synapse_ids = []
+    for timestamp, ids_chunk in ids_df.reset_index().groupby("timestamp"):
+        print(timestamp)
+        post_syns_chunk = client.materialize.synapse_query(
+            post_ids=ids_chunk["root_id"].tolist(), timestamp=timestamp
+        )
+        all_synapse_ids.extend(post_syns_chunk["id"])
+
     # NOTE: this was just for Ben pulling the synapse prediction data, shouldn't need to
     # to be run again
     prediction_path = Path(
@@ -137,6 +140,29 @@ ossify.plot.plot_morphology_2d(
     widths=(0.05, 3),  # Final line width range
 )
 ax.axis("off")
+
+# %%
+
+cv = client.info.segmentation_cloudvolume()
+mesh = cv.mesh.get(root_id)[root_id]
+mesh = (mesh.vertices, mesh.faces)
+
+# %%
+
+plotter = pv.Plotter()
+plotter.add_mesh(pv.make_tri_mesh(*mesh), color="lightgray", opacity=1.0)
+center = cell.skeleton.root_location  # center the camera on the soma
+distance = 300_000  # put the camera 300 microns away
+shift = center - np.array([0, 0, distance])
+plotter.camera.position = shift
+plotter.camera.focal_point = center
+plotter.camera.up = (0, -1, 0)  # make sure up is pia
+
+# this will open interactive window
+plotter.show()
+
+# this will make a static image
+plotter.show(jupyter_backend="static", interactive=False)
 
 # %%
 

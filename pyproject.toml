@@ -1,7 +1,8 @@
 [project]
 dependencies = [
     "caveclient[cv]>=7.6.0",
-    "cortical-tools",
+    "cloud-volume==12.6.2",
+    "cortical-tools>=0.0.5",
     "deltalake>=1.1.4",
     "fast-simplification>=0.1.7",
     "gpytoolbox>=0.3.3",
@@ -24,7 +25,6 @@ requires-python = ">=3.12,<3.13"
 version = "0.1.0"
 
 [tool.uv.sources]
-cortical-tools = { git = "https://github.com/ceesem/cortical-tools.git" }
 ossify = { path = "../ossify", editable = true }
 
 [tool.pylance]
