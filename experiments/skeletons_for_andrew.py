@@ -30,6 +30,7 @@ from matplotlib.collections import LineCollection
 
 root_id = 864691135654097346  # bVIP
 root_id = 864691135938202165  # bVIP
+root_id = 864691136023457943
 # root_id = 864691135136756761  # mVIP
 
 client = CAVEclient("minnie65_phase3_v1")
@@ -54,6 +55,9 @@ ids_df = ids_df.set_index("root_id")
 # %%
 
 if False:
+    # NOTE: this was just for Ben pulling the synapse prediction data, shouldn't need to
+    # to be run again
+
     all_synapse_ids = []
     for timestamp, ids_chunk in ids_df.reset_index().groupby("timestamp"):
         print(timestamp)
@@ -62,8 +66,6 @@ if False:
         )
         all_synapse_ids.extend(post_syns_chunk["id"])
 
-    # NOTE: this was just for Ben pulling the synapse prediction data, shouldn't need to
-    # to be run again
     prediction_path = Path(
         "/Users/ben.pedigo/code/meshrep/meshrep/data/auburn_elk_detour_predictions_deltalake"
     )
