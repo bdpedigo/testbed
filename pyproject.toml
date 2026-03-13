@@ -9,7 +9,7 @@ dependencies = [
     "ipykernel",
     "meshio>=5.3.5",
     "nglui>=3.8.2",
-    "ossify",
+    # "ossify",
     "pandas>=2.2.3",
     "pcg-skel>=1.3.0",
     "polars>=1.33.1",

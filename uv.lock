@@ -1715,20 +1715,6 @@ wheels = [
 ]
 
 [[package]]
-name = "morphsync"
-version = "0.1.0"
-source = { git = "https://github.com/ceesem/morphsync.git?rev=v0.0.3-csm#70a5685777e271d1420589ceba943d1919d0244c" }
-dependencies = [
-    { name = "cachetools" },
-    { name = "fastremap" },
-    { name = "joblib" },
-    { name = "numpy" },
-    { name = "pandas" },
-    { name = "scikit-learn" },
-    { name = "scipy" },
-]
-
-[[package]]
 name = "msgpack"
 version = "1.1.0"
 source = { registry = "https://pypi.org/simple" }
@@ -2015,60 +2001,6 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/3b/9b/33c58e0bfc788995eccd0d525ecd6b84b40d7ed182dd0751cd4c1322ac62/orjson-3.10.15-cp312-cp312-musllinux_1_2_x86_64.whl", hash = "sha256:b342567e5465bd99faa559507fe45e33fc76b9fb868a63f1642c6bc0735ad02a", size = 129898 },
     { url = "https://files.pythonhosted.org/packages/01/c1/d577ecd2e9fa393366a1ea0a9267f6510d86e6c4bb1cdfb9877104cac44c/orjson-3.10.15-cp312-cp312-win32.whl", hash = "sha256:0a4f27ea5617828e6b58922fdbec67b0aa4bb844e2d363b9244c47fa2180e665", size = 142566 },
     { url = "https://files.pythonhosted.org/packages/ed/eb/a85317ee1732d1034b92d56f89f1de4d7bf7904f5c8fb9dcdd5b1c83917f/orjson-3.10.15-cp312-cp312-win_amd64.whl", hash = "sha256:ef5b87e7aa9545ddadd2309efe6824bd3dd64ac101c15dae0f2f597911d46eaa", size = 133732 },
-]
-
-[[package]]
-name = "ossify"
-version = "0.0.1"
-source = { editable = "../ossify" }
-dependencies = [
-    { name = "caveclient" },
-    { name = "cloud-files" },
-    { name = "cloud-volume" },
-    { name = "matplotlib" },
-    { name = "morphsync" },
-    { name = "numpy" },
-    { name = "orjson" },
-    { name = "scipy" },
-    { name = "trimesh", extra = ["easy"] },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "caveclient", specifier = ">=7.6.0" },
-    { name = "cloud-files", specifier = ">=5.8.0" },
-    { name = "cloud-volume", specifier = ">=11.1.5" },
-    { name = "h5py", marker = "extra == 'legacy'", specifier = ">=3.14.0" },
-    { name = "matplotlib", specifier = ">=3.10.6" },
-    { name = "morphsync", git = "https://github.com/ceesem/morphsync.git?rev=v0.0.3-csm" },
-    { name = "numpy", specifier = ">=2.0.2" },
-    { name = "orjson", specifier = ">=3.10.15" },
-    { name = "scipy", specifier = ">=1.15" },
-    { name = "trimesh", extras = ["easy"], specifier = ">=4.6.2" },
-]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "bump-my-version" },
-    { name = "cloud-volume" },
-    { name = "ipykernel" },
-    { name = "pytest" },
-    { name = "pytest-cov" },
-]
-docs = [
-    { name = "mkdocs" },
-    { name = "mkdocs-material" },
-    { name = "mkdocstrings", extras = ["python"] },
-]
-lint = [{ name = "ruff" }]
-profile = [
-    { name = "pyinstrument" },
-    { name = "scalene" },
-]
-viz = [
-    { name = "cortical-tools", editable = "../cortical-tools" },
-    { name = "pyvista" },
-    { name = "seaborn", specifier = ">=0.13.2" },
 ]
 
 [[package]]
@@ -3111,7 +3043,6 @@ dependencies = [
     { name = "ipykernel" },
     { name = "meshio" },
     { name = "nglui" },
-    { name = "ossify" },
     { name = "pandas" },
     { name = "pcg-skel" },
     { name = "polars" },
@@ -3132,7 +3063,6 @@ requires-dist = [
     { name = "ipykernel" },
     { name = "meshio", specifier = ">=5.3.5" },
     { name = "nglui", specifier = ">=3.8.2" },
-    { name = "ossify", editable = "../ossify" },
     { name = "pandas", specifier = ">=2.2.3" },
     { name = "pcg-skel", specifier = ">=1.3.0" },
     { name = "polars", specifier = ">=1.33.1" },
