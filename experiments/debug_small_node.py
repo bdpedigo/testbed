@@ -655,7 +655,10 @@ for i in range(len(loop_0)):
 # Show the classification for _classify_vertex_to_face for each vertex
 print("\nFace classifications via _classify_vertex_to_face:")
 from collections import Counter
-classifs = [_classify_vertex_to_face(loop_0_verts[i], bbox, tol) for i in range(len(loop_0))]
+
+classifs = [
+    _classify_vertex_to_face(loop_0_verts[i], bbox, tol) for i in range(len(loop_0))
+]
 counts = Counter(classifs)
 for face, count in counts.most_common():
     print(f"  axis={face[0]}, side={face[1]}: {count} vertices")
