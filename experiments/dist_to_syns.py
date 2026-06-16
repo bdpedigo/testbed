@@ -202,3 +202,73 @@ sns.jointplot(
     alpha=0.1,
     linewidth=0,
 )
+
+# %%
+
+synapses = pl.scan_delta(local_path)
+
+synapses = synapses.select(
+    pl.col("ctr_pt_position_x") * 4,
+    pl.col("ctr_pt_position_y") * 4,
+    pl.col("ctr_pt_position_z") * 40,
+    pl.col("size"),
+    pl.col("synapse_id"),
+)
+synapses = synapses.filter(
+    (pl.col("ctr_pt_position_x") >= x_min)
+    & (pl.col("ctr_pt_position_x") <= x_max)
+    & (pl.col("ctr_pt_position_y") >= y_min)
+    & (pl.col("ctr_pt_position_y") <= y_max)
+    & (pl.col("ctr_pt_position_z") >= z_min)
+    & (pl.col("ctr_pt_position_z") <= z_max)
+)
+
+synapses = synapses.collect()
+
+# %%
+pts = (
+    synapses.select(
+        pl.col("ctr_pt_position_x"),
+        pl.col("ctr_pt_position_y"),
+        pl.col("ctr_pt_position_z"),
+    )
+    .to_numpy()
+    .astype("float32")
+)
+
+# %%
+batch_size = 10_000_000
+timer = time.time()
+verts_f = bv_mesh[0].astype(np.float32, order="F")
+faces_i = bv_mesh[1].astype(np.int32, order="F")
+
+dists_batches = []
+for i in range(0, len(pts), batch_size):
+    batch = pts[i : i + batch_size].astype(np.float32, order="F")
+    d, _, _ = pcu.closest_points_on_mesh(batch, verts_f, faces_i)
+    dists_batches.append(d)
+    print(f"  Batch {i // batch_size + 1}: {len(batch)} points done")
+
+dists = np.concatenate(dists_batches)
+dists = pl.Series(name="dist_to_bv", values=dists)
+print(f"{time.time() - timer:.3f} seconds elapsed to compute closest points on mesh.")
+
+del pts, dists_batches
+# %%
+synapses = synapses.with_columns(dists)
+
+# %%
+
+
+fig, ax = plt.subplots(figsize=(6, 6))
+sns.scatterplot(
+    synapses.sample(100000), x="dist_to_bv", y="size", alpha=0.1, linewidth=0, ax=ax
+)
+ax.set(yscale="log")
+
+
+from scipy.stats import spearmanr
+
+sample = synapses.sample(1000000)
+corr, p_value = spearmanr(sample["dist_to_bv"], sample["size"])
+print(f"Spearman correlation: {corr:.4f}, p-value: {p_value:.4e}")
