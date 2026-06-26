@@ -269,6 +269,12 @@ ax.set(yscale="log")
 
 from scipy.stats import spearmanr
 
-sample = synapses.sample(1000000)
+sample = synapses.sample(1_000_000)
 corr, p_value = spearmanr(sample["dist_to_bv"], sample["size"])
 print(f"Spearman correlation: {corr:.4f}, p-value: {p_value:.4e}")
+
+# %%
+
+fig, ax = plt.subplots(figsize=(6, 6))
+sns.histplot(sample, x="dist_to_bv", log_scale=True, ax=ax)
+ax.set_xlabel("Distance to Blood Vessel (nm)")
