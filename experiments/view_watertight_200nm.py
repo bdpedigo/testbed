@@ -16,7 +16,6 @@ from pathlib import Path
 import numpy as np
 import pyvista as pv
 import trimesh
-
 from meshmash import fetch_sample_mesh
 
 try:

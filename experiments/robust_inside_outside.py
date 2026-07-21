@@ -184,7 +184,7 @@ plotter.camera.focal_point = pos
 
 plotter.show()
 
-#%%
+# %%
 # import pymeshlab
 
 # ms = pymeshlab.MeshSet()
@@ -332,9 +332,7 @@ class_codes = {
     "branchy": 4,
 }
 class_cmap = ["red", "orange", "blue", "purple", "green"]
-boundary.point_data["cls"] = np.array(
-    [class_codes[c] for c in cls_of_pt], dtype=int
-)
+boundary.point_data["cls"] = np.array([class_codes[c] for c in cls_of_pt], dtype=int)
 
 plotter = pv.Plotter()
 plotter.add_mesh(poly, color="grey", opacity=0.3)
@@ -351,7 +349,6 @@ plotter.add_text(
 )
 plotter.enable_fly_to_right_click()
 plotter.show()
-
 
 
 # %%

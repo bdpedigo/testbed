@@ -39,7 +39,6 @@ import point_cloud_utils as pcu
 import pyvista as pv
 import trimesh
 from gpytoolbox import fast_winding_number
-
 from meshmash import fetch_sample_mesh
 
 mesh = fetch_sample_mesh("microns_neuron_sample")
