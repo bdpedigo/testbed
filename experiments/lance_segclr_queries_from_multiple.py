@@ -67,17 +67,45 @@ query_df = pl.DataFrame(
         "root_id_partition": [mmh3_shard(root_id, N_SHARDS) for root_id in segs],
     }
 )
-query_df = query_df.slice(0, 14)
+# query_df = query_df.slice(0, 14)
 
-#%%
+# %%
+# delta_table = deltalake.DeltaTable(str(DELTA_EMBEDDING_PATH))
+# # Get the add actions from the delta log
+# actions = pl.from_arrow(delta_table.get_add_actions(flatten=True))
+# # print(f'\nTotal parquet files: {len(actions)}')
+# # print(f'Columns: {actions.columns.tolist()}')
 
+# # # Check if there's partition info
+# # if 'partition_values' in actions.columns or 'partition.root_id_partition' in actions.columns:
+# #     print('Has partition columns')
+# paths = actions.filter(
+#     pl.col("partition.root_id_partition").is_in(query_df["root_id_partition"].to_list())
+# )["path"].to_list()
+
+# # %%
+
+# # examine the schema for each parquet file
+# for path in paths:
+#     parquet_file = pl.scan_parquet(DELTA_EMBEDDING_PATH + "/" + path)
+#     schema = parquet_file.collect_schema()
+#     print(f"Schema for {path}:")
+#     print(schema)
+#     print("\n")
 
 # %%
 print(f"Querying {len(query_df)} objects from {DELTA_EMBEDDING_PATH}")
+# NOTE: workaround for https://github.com/pola-rs/polars/issues/27866
+# pl.scan_delta incorrectly infers Array(Float32, 64) as List(Float32)
+import pyarrow.compute as pc
+
+partitions = query_df["root_id_partition"].to_list()
+dataset = delta_table.to_pyarrow_dataset()
+filtered_dataset = dataset.filter(pc.field("root_id_partition").isin(partitions))
+
 sample_df = (
-    pl.scan_delta(DELTA_EMBEDDING_PATH)
+    pl.scan_pyarrow_dataset(filtered_dataset)
     .filter(
-        pl.col("root_id_partition").is_in(query_df["root_id_partition"].to_list()),
         pl.col("root_id").is_in(query_df["root_id"].to_list()),
     )
     .join(
@@ -85,8 +113,25 @@ sample_df = (
         on=["root_id_partition", "root_id"],
         how="semi",
     )
-    .collect(engine="streaming")
+    .collect()
 )
+
+# sample_df = (
+#     pl.scan_delta(DELTA_EMBEDDING_PATH).with_columns(
+#         pl.col("embedding").cast(pl.List(pl.Float32))
+#     )
+#     .filter(
+#         pl.col("root_id_partition").is_in(query_df["root_id_partition"].to_list()),
+#         pl.col("root_id").is_in(query_df["root_id"].to_list()),
+#     )
+#     .join(
+#         query_df.lazy(),
+#         on=["root_id_partition", "root_id"],
+#         how="semi",
+#     )
+#     .collect(engine="streaming")
+# )
+
 print(len(sample_df), "embeddings found", len(query_df), "objects queried")
 
 # %%
@@ -147,7 +192,7 @@ distances = cosine_distances(found_vectors, known_vectors)
 
 median_dists = np.median(distances, axis=1)
 
-sns.histplot(median_dists, bins=100)
+sns.histplot(median_dists, bins=100, log_scale=True)
 
 nearest_neighbors_df = nearest_neighbors_df.with_columns(
     pl.Series("median_distance", median_dists),
@@ -156,6 +201,7 @@ nearest_neighbors_df = nearest_neighbors_df.with_columns(
 # %%
 import matplotlib.pyplot as plt
 from sklearn.decomposition import PCA
+
 # from sklearn.manifold import TSNE
 from umap import UMAP
 
@@ -223,7 +269,7 @@ vs = (
     ViewerState(client=client)
     .add_layers_from_client()
     .add_points(
-        nearest_neighbors_df_to_show.query("mean_median_distance < 0.05"),
+        nearest_neighbors_df_to_show.query("mean_median_distance >= 0.05 and mean_median_distance <= 0.07"),
         point_column=["x", "y", "z"],
         data_resolution=[1, 1, 1],
         segment_column="root_id",
